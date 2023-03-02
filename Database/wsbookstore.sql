@@ -42,6 +42,16 @@ SET time_zone = "+00:00";
 -- Structure de la table `author`
 --
 
+-- Nous avons conteneurisé la base de données pour simplifier son déploiement.
+
+CREATE OR REPLACE DATABASE wsbookstore;
+
+CREATE USER 'shrek'@'%' IDENTIFIED BY 'shrek';
+GRANT ALL PRIVILEGES ON wsbookstore.* TO 'shrek'@'%' IDENTIFIED BY 'shrek';
+
+USE wsbookstore;
+
+
 CREATE TABLE `author` (
   `id` int NOT NULL,
   `lname` varchar(40) NOT NULL,
