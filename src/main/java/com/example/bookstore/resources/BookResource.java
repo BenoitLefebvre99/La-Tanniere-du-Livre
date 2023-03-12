@@ -2,7 +2,9 @@ package com.example.bookstore.resources;
 
 import com.example.bookstore.model.Book;
 import com.example.bookstore.model.BorrowingCard;
+import com.example.bookstore.services.BookService;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -12,17 +14,20 @@ import java.util.List;
 
 @Path("/books")
 public class BookResource {
+
+    @Inject BookService bookService;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Book> getAll() {
-        return null;
+        return bookService.findAll();
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Book getBook(@PathParam("id") String bookEan) {
-        return null;
+        return bookService.findOne(bookEan);
     }
 
     @GET
